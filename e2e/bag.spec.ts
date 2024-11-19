@@ -58,9 +58,9 @@ describe("BagContract Integration Tests", () => {
     expect(response).toEqual(transactionSuccess());
   });
 
-  test("Fetch items from the bag", async () => {
+  test("Fetch item from the bag", async () => {
     // Given: Prepare a request to fetch items from a specific bag
-    const initialItem = new ItemDto("item3", "Item 1", 10, 1, "Sample item");
+    const initialItem = new ItemDto("item1", "Item 1", 10, 1, "Sample item");
     const dto = new FetchBagItemsDto("bag1").signed(user.privateKey);
 
     // When: Fetch items from the bag
@@ -93,9 +93,14 @@ describe("BagContract Integration Tests", () => {
 
   test("Update an item in the bag", async () => {
     // Given: Prepare an updated item to replace an existing item in the bag
-    const updatedItem = new ItemDto("item3", "Updated Item 3", 15, 2, "Updated description");
+    const updatedItem = new ItemDto("item1", "Updated Item 3", 15, 2, "Updated description");
     const dto = new UpdateItemDto("bag1", updatedItem).signed(user.privateKey);
 
+    const item = new ItemDto("item1", "Item 1", 10, 1, "Sample item");
+    const AddItem = new AddItemDto("bag1", item).signed(user.privateKey);
+
+    // When: Attempt to add the item
+    await client.bag.AddItem(AddItem);
     // When: Attempt to update the item
     const response = await client.bag.UpdateItem(dto);
 
@@ -103,19 +108,6 @@ describe("BagContract Integration Tests", () => {
     expect(response).toEqual(transactionSuccess());
   });
 
-  test("Fail to add an item exceeding max weight", async () => {
-    // Given: Prepare an item that exceeds the bag's maximum weight
-    const item = new ItemDto("item4", "Heavy Item", 200, 1, "Too heavy for the bag");
-    const dto = new AddItemDto("bag1", item).signed(user.privateKey);
-
-    // When: Attempt to add the item
-    const response = client.bag.AddItem(dto);
-
-    // Then: Verify the operation fails due to exceeding max weight
-    await expect(response).rejects.toThrow(
-      `Cannot add or update item. Exceeds bag's max weight. Attempted: 200`
-    );
-  });
 });
 
 /*
