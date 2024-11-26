@@ -1,46 +1,115 @@
-# Getting Started with Create React App
+# Bag Management App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+
+This Bag Management App is a React-based application designed for performing CRUD (Create, Read, Update, Delete) operations on bags and their items. The project provides a comprehensive solution for managing bag inventories with flexible environment configuration.
+
+## Prerequisites
+
+- Node.js (recommended version 16.x or later)
+- npm (Node Package Manager)
+
+## Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/wolfyy970/GalaChainCRUD
+cd frontend-app
+```
+
+### 2. Environment Setup
+
+#### Environment Variables
+
+1. Copy the environment template:
+
+```bash
+cp env.dev .env
+```
+
+2. Configure the environment:
+
+Edit the `.env` file and set the environment:
+
+```env
+# Choose either 'local' or 'testnet'
+REACT_APP_ENV=local
+```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
 
 ## Available Scripts
 
-In the project directory, you can run:
+### Development
 
-### `npm start`
+- `npm start`
+  - Runs the app in development mode
+  - Open [http://localhost:3000](http://localhost:3000) to view in browser
+  - The page will reload if you make edits
+  - You will also see any lint errors in the console
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Testing
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- `npm test`
+  - Launches the test runner in interactive watch mode
+  - See [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information
 
-### `npm test`
+### Production Build
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `npm run build`
+  - Builds the app for production in the `build` folder
+  - Correctly bundles React in production mode
+  - Optimizes the build for best performance
+  - The build is minified with hashed filenames
+  - App is ready for deployment
 
-### `npm run build`
+## Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Bag Management
+- Create bags with unique ID, holder, and maximum weight
+- View and manage bag contents
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Item Management
+- Add items to bags
+- Update item details (quantity, etc.)
+- Remove items from bags
+- Fetch and display bag items
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Environment Configuration
 
-### `npm run eject`
+The app supports two primary environments:
+- `local`: For local development and testing
+- `testnet`: For testing with remote test network
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The environment is dynamically configured using the `REACT_APP_ENV` variable.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Advanced Configuration
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Ejecting
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**Note: This is a one-way operation. Once you eject, you can't go back!**
 
-## Learn More
+```bash
+npm run eject
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Removes the single build dependency from your project
+- Copies all configuration files and dependencies into your project
+- Gives you full control over build tools and configuration
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Troubleshooting
+
+- Ensure all environment variables are correctly set
+- Check network connectivity for TestNet environments
+- Verify Node.js and npm versions
+
+
+## License
+
+Distributed under the [Your License]. See `LICENSE` for more information.
+
