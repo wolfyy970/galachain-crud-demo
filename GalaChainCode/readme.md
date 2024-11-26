@@ -45,7 +45,7 @@ npm install
    ```bash
    npm run network:start
    ```
-   To run the network locally
+   To run the network locally, make sure you have docker containers installed and running
 
 ## Project Structure
 
