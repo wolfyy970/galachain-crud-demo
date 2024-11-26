@@ -1,4 +1,4 @@
-# Bag Management App
+# Frontend App For Bag Contract
 
 ## Overview
 
