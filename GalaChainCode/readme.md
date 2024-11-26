@@ -1,6 +1,6 @@
 # GalaChain Project
 
-A comprehensive implementation of smart contracts for the GalaChain blockchain platform, focusing on robust development, testing, and deployment workflows.
+A implementation of smart contracts with basic crud functionality in the GalaChain blockchain platform, focusing on robust development, testing, and deployment workflows of gala contracts.
 
 ## Table of Contents
 
@@ -33,7 +33,7 @@ Ensure you have the following tools installed:
 
 ```bash
 git clone https://github.com/wolfyy970/GalaChainCRUD
-cd GalaChainCRUD
+cd GalaChainCode
 ```
 
 ### 2. Install Dependencies
@@ -53,8 +53,6 @@ npm install
 ├── src/                # Smart contract implementations
 ├── e2e/                # End-to-end tests
 ├── keys/               # Public keys for chaincode deployment
-├── lib/                # Compiled JavaScript files
-├── test-network/       # GalaChain network configurations
 └── README.md           # Project documentation
 ```
 
@@ -71,7 +69,7 @@ npm install
 | `npm run format` | Formats code using Prettier |
 | `npm run test` | Runs unit tests |
 | `npm run test:e2e` | Executes end-to-end tests |
-| `npm run network:start` | Deploys contracts to GalaChain network |
+| `npm run network:start` | Start The Network Locally |
 
 ## Chaincode Keys
 
@@ -95,7 +93,7 @@ galachain keygen gc-admin-key
 galachain keygen gc-dev-key
 ```
 
-**Note**: Share the developer key (`gc-dev-key.pub`) with team members involved in chaincode deployment.
+**Note**: Current Project Keys Public keys (`gc-dev-key.pub`),(`gc-admin-key.pub`) are in keys folder and private keys are in env But they can also be founds under in root(~/.gc-keys) of your local machine when you init galachain app or used keygen commands .
 
 ## Testing
 
@@ -114,6 +112,8 @@ npm run test
 ```bash
 npm run test:e2e
 ```
+**Note**: Ensure To Run Tests Only When Network is Running.
+
 
 ## Development Workflow
 
@@ -122,19 +122,89 @@ npm run test:e2e
    - Follow TypeScript best practices
    - Write comprehensive unit tests
 
-2. **Testing**
-   - Create test cases in the `e2e/` directory
-   - Verify contract functionality and network interactions
-   - Ensure high test coverage
-
-3. **Start Network**
+2. **Start Network**
    ```bash
    npm run network:start
    ```
+   
+3. **Testing**
+   - Create test cases in the `e2e/` directory
+   - Verify contract functionality and network interactions
+   - Ensure high test coverage
+   
 
 4. **Debugging**
    - Utilize logs and test results
    - Leverage GalaChain CLI for network inspection
+
+
+# GalaChain Chaincode Deployment Guide
+
+### 1. Build and Publish Docker Image
+
+#### Using ttl.sh (Temporary Image Hosting)
+```bash
+docker build --push -t ttl.sh/your-unique-image-name:1d .
+```
+
+**Key Points:**
+- Replace `your-unique-image-name` with a descriptive name
+- `:1d` creates a 24-hour temporary image
+- The image name in this example is `ttl.sh/crud_v1`
+
+### 2. Deploy Chaincode to Testnet or Sandbox
+
+```bash
+galachain deploy /gc-dev-key \
+  --docker-image-tag ttl.sh/your-unique-image-name:1d
+```
+
+**Important Notes:**
+- Use the full docker image tag
+- Ensure you have the correct developer key path
+- Specify the exact docker image and version
+
+### 3. Fetch Chaincode Information
+
+```bash
+galachain info /gc-dev-key
+```
+**This Will Show Response Object:**
+
+  -   "org": "Testnet03Org",
+  -   "channel": "testnet03",
+  -   "chaincode": "gc-934ed10e3aa04e39744dbaf3e6da7c804acb8010",
+  -   "imageName": "ttl.sh/crud_v1",
+  -   "status": "CC_DEPLOYED",
+  -   "lastOperationId": "1732109568",
+  -   "adminPublicKey": "0427c2f7e66bec7fc1f7c962357079e4e8d08cf4e0ab9f6cc89ba491edd2247b47d6e6a76b2f8f1e624e571f5ded158692dddc6524ce31feb804b0bb8043988df6",
+  -   "lastUpdated": "2024-11-20T14:22:10.210Z"
+
+## Best Practices
+
+- Use unique, descriptive image names
+- Version your images consistently
+- Keep track of deployment tags
+- Verify image availability before deployment
+
+
+## Example Workflow
+
+```bash
+# Build and push image
+docker build --push -t ttl.sh/my-galachain-contract:1d .
+
+# Deploy to testnet
+galachain deploy /gc-dev-key \
+  --docker-image-tag ttl.sh/my-galachain-contract:1d
+
+# Fetch deployment info
+galachain info /gc-dev-key
+```
+
+## Additional Resources
+- [GalaChain CLI Documentation](https://docs.gala.com/cli)
+- [Docker Documentation](https://docs.docker.com)
 
 ## Troubleshooting
 
@@ -142,7 +212,10 @@ npm run test:e2e
 - Verify network configurations
 - Check key permissions and paths
 - Review Docker and GalaChain CLI setup
-
+- Confirm Docker image builds successfully
+- Check network connectivity
+- Verify developer key permissions
+- Review GalaChain CLI logs for detailed error messages
 
 
 ## License

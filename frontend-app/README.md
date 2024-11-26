@@ -2,7 +2,7 @@
 
 ## Overview
 
-This Bag Management App is a React-based application designed for performing CRUD (Create, Read, Update, Delete) operations on bags and their items. The project provides a comprehensive solution for managing bag inventories with flexible environment configuration.
+This Frontend App is a React-based application designed for performing CRUD (Create, Read, Update, Delete) operations on bag Contract. 
 
 ## Prerequisites
 
@@ -50,8 +50,7 @@ npm install
 - `npm start`
   - Runs the app in development mode
   - Open [http://localhost:3000](http://localhost:3000) to view in browser
-  - The page will reload if you make edits
-  - You will also see any lint errors in the console
+  
 
 ### Testing
 
@@ -76,31 +75,25 @@ npm install
 
 ### Item Management
 - Add items to bags
-- Update item details (quantity, etc.)
+- Update item details (quantity)
 - Remove items from bags
 - Fetch and display bag items
 
 ## Environment Configuration
 
 The app supports two primary environments:
-- `local`: For local development and testing
-- `testnet`: For testing with remote test network
+- `local`: For testing with Gala Local network.
+
+- `testnet`: For testing with Gala test network.
+
+**Note: The Testnet environment needs an active mainnet Ethereum wallet and by default the app connects the installed wallet on your browser**
+
+**Note: The Local environment needs an running gala network on local machine**
 
 The environment is dynamically configured using the `REACT_APP_ENV` variable.
 
-## Advanced Configuration
+ 
 
-### Ejecting
-
-**Note: This is a one-way operation. Once you eject, you can't go back!**
-
-```bash
-npm run eject
-```
-
-- Removes the single build dependency from your project
-- Copies all configuration files and dependencies into your project
-- Gives you full control over build tools and configuration
 
 ## Troubleshooting
 
