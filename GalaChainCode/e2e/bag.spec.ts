@@ -41,7 +41,7 @@ describe("BagContract Integration Tests", () => {
 
     // When
     const response = await client.bag.CreateBag(dto);
-
+    console.log("Create a new bag sandbox-api-response",response);
     // Then
     expect(response).toEqual(transactionSuccess());
   });
@@ -53,7 +53,7 @@ describe("BagContract Integration Tests", () => {
 
     // When: Attempt to add the item
     const response = await client.bag.AddItem(dto);
-
+    console.log("Add an item to the bag sandbox-api-response",response);
     // Then: Verify the operation was successful
     expect(response).toEqual(transactionSuccess());
   });
@@ -65,7 +65,7 @@ describe("BagContract Integration Tests", () => {
 
     // When: Fetch items from the bag
     const response = await client.bag.FetchBagItems(dto);
-
+    console.log("Fetch item from the bag sandbox-api-response",response);
     // Then: Verify the bag contains the expected item(s)
     expect(response.Data).toEqual(
       expect.arrayContaining([
@@ -86,7 +86,7 @@ describe("BagContract Integration Tests", () => {
 
     // When: Attempt to remove the item
     const response = await client.bag.RemoveItem(dto);
-
+    console.log("Remove an item from the bag sandbox-api-response",response);
     // Then: Verify the operation was successful
     expect(response).toEqual(transactionSuccess());
   });
@@ -103,7 +103,7 @@ describe("BagContract Integration Tests", () => {
     await client.bag.AddItem(AddItem);
     // When: Attempt to update the item
     const response = await client.bag.UpdateItem(dto);
-
+    console.log("Update an item in the bag  sandbox-api-response",response);
     // Then: Verify the operation was successful
     expect(response).toEqual(transactionSuccess());
   });
