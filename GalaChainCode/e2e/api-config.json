@@ -9,6 +9,10 @@
             "pathFragment": "public-key-contract",
             "chaincodeName": "basic-product",
             "contractName": "PublicKeyContract"
+          },{
+            "pathFragment": "bag-contract",
+            "chaincodeName": "basic-product",
+            "contractName": "BagContract"
           }
         ]
       }

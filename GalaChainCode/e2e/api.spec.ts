@@ -19,18 +19,6 @@ jest.setTimeout(30000);
 
 describe("API snapshots", () => {
   const contractConfig = {
-    apples: {
-      channel: "product-channel",
-      chaincode: "basic-product",
-      contract: "AppleContract",
-      api: commonContractAPI
-    },
-    assets: {
-      channel: "product-channel",
-      chaincode: "basic-product",
-      contract: "GalaChainToken",
-      api: commonContractAPI
-    },
     pk: {
       channel: "product-channel",
       chaincode: "basic-product",
@@ -58,24 +46,6 @@ describe("API snapshots", () => {
   test(`Api of ${contractConfig.pk.contract}`, async () => {
     // When
     const response = await client.pk.GetContractAPI();
-
-    // Then
-    expect(response).toEqual(transactionSuccess());
-    expect({ ...response.Data, contractVersion: "?.?.?" }).toMatchSnapshot();
-  });
-
-  test(`Api of ${contractConfig.assets.contract}`, async () => {
-    // When
-    const response = await client.assets.GetContractAPI();
-
-    // Then
-    expect(response).toEqual(transactionSuccess());
-    expect({ ...response.Data, contractVersion: "?.?.?" }).toMatchSnapshot();
-  });
-
-  test(`Api of ${contractConfig.apples.contract}`, async () => {
-    // When
-    const response = await client.apples.GetContractAPI();
 
     // Then
     expect(response).toEqual(transactionSuccess());

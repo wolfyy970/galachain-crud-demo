@@ -107,7 +107,6 @@ describe("BagContract Integration Tests", () => {
     // Then: Verify the operation was successful
     expect(response).toEqual(transactionSuccess());
   });
-
 });
 
 /*
