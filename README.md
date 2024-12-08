@@ -1,4 +1,4 @@
-# Frontend App For Bag Contract
+# Frontend App For Bag Contract CRUD
 
 ## Overview
 
