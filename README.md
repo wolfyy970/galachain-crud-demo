@@ -2,7 +2,7 @@
 
 ## Overview
 
-This Frontend App is a React-based application designed for performing CRUD (Create, Read, Update, Delete) operations on a bag Contract. 
+This Frontend App is a React-based application designed for performing CRUD (Create, Read, Update, Delete) operations on a GalaChain Contract. 
 
 ## Prerequisites
 
