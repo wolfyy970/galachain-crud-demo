@@ -104,5 +104,5 @@ The environment is dynamically configured using the `REACT_APP_ENV` variable.
 
 ## License
 
-Distributed under the [Your License]. See `LICENSE` for more information.
+Distributed under the [MIT License]. See `LICENSE` for more information.
 
